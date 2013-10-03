@@ -1,0 +1,94 @@
+/*Assignment 1: Compsci 250: Ian Zhang*/
+
+/* Problem 2a: Find all beers served at Satisfaction */
+
+\project_{beer}(
+ 
+\select_{bar = 'Satisfaction'} Serves
+);
+
+/* Problem 2b: Find the names and addresses of bars frequented by Amy */
+
+\project_{bar, address} (
+	(\select_{drinker = 'Amy'}
+		Frequents)
+	\join \rename_{bar, address} 
+		Bar 
+);
+
+/* Problem 2c: Find the names of bars serving atleast one beer liked by Amy for no more than $2.50 */
+
+\project_{beer} (
+	(\project_{beer} (
+
+		\select_{drinker = 'Amy'}
+			Likes)) 
+
+		\intersect
+
+	(\project_{beer} (
+		\select_{price <= 2.50}
+			Serves
+	))
+
+);
+
+/* Problem 2d: Find the names of bars frequented by both Ben and Dan */
+
+\project_{bar} (
+	( \select_{drinker = 'Ben'}
+		Frequents )
+	\diff
+	( \select_{drinker = 'Dan'}
+		Frequents ) 
+);
+
+/* Problem 2e: Find the names of bars frequented by either Ben or Dan, but not both. */
+
+\project_{bar} (
+	(\select_{drinker = 'Ben'}
+		Frequents
+	\union
+	\select_{drinker = 'Dan'}
+		Frequents))
+	
+	\diff
+
+\project_{bar} (
+	(\select_{drinker = 'Ben'}
+                Frequents))
+        \intersect
+\project_{bar} (
+        (\select_{drinker = 'Dan'}
+                Frequents))
+;
+
+/*  Problem 2f: For each bar, find all beers served there that are liked by no one who frequents there. */
+
+\project_{bar,beer} (
+	Serves
+)
+
+\diff
+
+\project_{bar,beer} (
+	
+		(Frequents \join Likes)
+
+		\join 
+
+		Serves
+)
+
+;	
+
+
+/* Problem 2g: Find names of all drinkers who frequent only those bars that serve some beers they like. */
+
+1. get drinkers, bars, and the beers served there in a table (basically a frequents \join serves with some fancy projections)
+2. (1) join likes to filter out for only tuples where the drinker likes the beer of the bar he's frequenting
+3. project the drinkers out of 2
+
+/* Problem 2h: Find names of all drinkers who frequent every bar that serves some beers they like. */
+
+Same as above except no filter 

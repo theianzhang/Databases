@@ -1,0 +1,30 @@
+Parsed query:
+\diff
+    \project_{bar,beer}
+        Serves
+    \project_{bar,beer}
+        \join_{null}
+            \join_{null}
+                Frequents
+                Likes
+            Serves
+=====
+Validated query:
+\diff <- output schema: RA_TMP_VIEW_9(bar varchar, beer varchar)
+    \project_{bar,beer} <- output schema: RA_TMP_VIEW_2(bar varchar, beer varchar)
+        Serves <- output schema: RA_TMP_VIEW_1(bar varchar, beer varchar, price numeric)
+    \project_{bar,beer} <- output schema: RA_TMP_VIEW_8(bar varchar, beer varchar)
+        \join_{null} <- output schema: RA_TMP_VIEW_7(drinker varchar, bar varchar, times_a_week int2, beer varchar, price numeric)
+            \join_{null} <- output schema: RA_TMP_VIEW_5(drinker varchar, bar varchar, times_a_week int2, beer varchar)
+                Frequents <- output schema: RA_TMP_VIEW_3(drinker varchar, bar varchar, times_a_week int2)
+                Likes <- output schema: RA_TMP_VIEW_4(drinker varchar, beer varchar)
+            Serves <- output schema: RA_TMP_VIEW_6(bar varchar, beer varchar, price numeric)
+=====
+Output schema: (bar varchar, beer varchar)
+-----
+Satisfaction|Full Sail
+-----
+Total number of rows: 1
+
+Bye!
+

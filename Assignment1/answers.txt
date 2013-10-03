@@ -1,0 +1,161 @@
+Parsed query:
+\project_{beer}
+    \select_{bar = 'Satisfaction'}
+        Serves
+=====
+Validated query:
+\project_{beer} <- output schema: RA_TMP_VIEW_3(beer varchar)
+    \select_{bar = 'Satisfaction'} <- output schema: RA_TMP_VIEW_2(bar varchar, beer varchar, price numeric)
+        Serves <- output schema: RA_TMP_VIEW_1(bar varchar, beer varchar, price numeric)
+=====
+Output schema: (beer varchar)
+-----
+Amstel
+Budweiser
+Corona
+Dixie
+Full Sail
+-----
+Total number of rows: 5
+
+Parsed query:
+\project_{bar, address}
+    \join_{null}
+        \select_{drinker = 'Amy'}
+            Frequents
+        \rename_{bar, address}
+            Bar
+=====
+Validated query:
+\project_{bar, address} <- output schema: RA_TMP_VIEW_6(bar varchar, address varchar)
+    \join_{null} <- output schema: RA_TMP_VIEW_5(drinker varchar, bar varchar, times_a_week int2, address varchar)
+        \select_{drinker = 'Amy'} <- output schema: RA_TMP_VIEW_2(drinker varchar, bar varchar, times_a_week int2)
+            Frequents <- output schema: RA_TMP_VIEW_1(drinker varchar, bar varchar, times_a_week int2)
+        \rename_{bar, address} <- output schema: RA_TMP_VIEW_4(bar varchar, address varchar)
+            Bar <- output schema: RA_TMP_VIEW_3(name varchar, address varchar)
+=====
+Output schema: (bar varchar, address varchar)
+-----
+James Joyce Pub|912 W. Main Street
+-----
+Total number of rows: 1
+
+Parsed query:
+\project_{beer}
+    \intersect
+        \project_{beer}
+            \select_{drinker = 'Amy'}
+                Likes
+        \project_{beer}
+            \select_{price <= 2.50}
+                Serves
+=====
+Validated query:
+\project_{beer} <- output schema: RA_TMP_VIEW_8(beer varchar)
+    \intersect <- output schema: RA_TMP_VIEW_7(beer varchar)
+        \project_{beer} <- output schema: RA_TMP_VIEW_3(beer varchar)
+            \select_{drinker = 'Amy'} <- output schema: RA_TMP_VIEW_2(drinker varchar, beer varchar)
+                Likes <- output schema: RA_TMP_VIEW_1(drinker varchar, beer varchar)
+        \project_{beer} <- output schema: RA_TMP_VIEW_6(beer varchar)
+            \select_{price <= 2.50} <- output schema: RA_TMP_VIEW_5(bar varchar, beer varchar, price numeric)
+                Serves <- output schema: RA_TMP_VIEW_4(bar varchar, beer varchar, price numeric)
+=====
+Output schema: (beer varchar)
+-----
+Amstel
+-----
+Total number of rows: 1
+
+Parsed query:
+\project_{bar}
+    \diff
+        \select_{drinker = 'Ben'}
+            Frequents
+        \select_{drinker = 'Dan'}
+            Frequents
+=====
+Validated query:
+\project_{bar} <- output schema: RA_TMP_VIEW_6(bar varchar)
+    \diff <- output schema: RA_TMP_VIEW_5(drinker varchar, bar varchar, times_a_week int2)
+        \select_{drinker = 'Ben'} <- output schema: RA_TMP_VIEW_2(drinker varchar, bar varchar, times_a_week int2)
+            Frequents <- output schema: RA_TMP_VIEW_1(drinker varchar, bar varchar, times_a_week int2)
+        \select_{drinker = 'Dan'} <- output schema: RA_TMP_VIEW_4(drinker varchar, bar varchar, times_a_week int2)
+            Frequents <- output schema: RA_TMP_VIEW_3(drinker varchar, bar varchar, times_a_week int2)
+=====
+Output schema: (bar varchar)
+-----
+James Joyce Pub
+Satisfaction
+Talk of the Town
+-----
+Total number of rows: 3
+
+Parsed query:
+\intersect
+    \diff
+        \project_{bar}
+            \union
+                \select_{drinker = 'Ben'}
+                    Frequents
+                \select_{drinker = 'Dan'}
+                    Frequents
+        \project_{bar}
+            \select_{drinker = 'Ben'}
+                Frequents
+    \project_{bar}
+        \select_{drinker = 'Dan'}
+            Frequents
+=====
+Validated query:
+\intersect <- output schema: RA_TMP_VIEW_14(bar varchar)
+    \diff <- output schema: RA_TMP_VIEW_10(bar varchar)
+        \project_{bar} <- output schema: RA_TMP_VIEW_6(bar varchar)
+            \union <- output schema: RA_TMP_VIEW_5(drinker varchar, bar varchar, times_a_week int2)
+                \select_{drinker = 'Ben'} <- output schema: RA_TMP_VIEW_2(drinker varchar, bar varchar, times_a_week int2)
+                    Frequents <- output schema: RA_TMP_VIEW_1(drinker varchar, bar varchar, times_a_week int2)
+                \select_{drinker = 'Dan'} <- output schema: RA_TMP_VIEW_4(drinker varchar, bar varchar, times_a_week int2)
+                    Frequents <- output schema: RA_TMP_VIEW_3(drinker varchar, bar varchar, times_a_week int2)
+        \project_{bar} <- output schema: RA_TMP_VIEW_9(bar varchar)
+            \select_{drinker = 'Ben'} <- output schema: RA_TMP_VIEW_8(drinker varchar, bar varchar, times_a_week int2)
+                Frequents <- output schema: RA_TMP_VIEW_7(drinker varchar, bar varchar, times_a_week int2)
+    \project_{bar} <- output schema: RA_TMP_VIEW_13(bar varchar)
+        \select_{drinker = 'Dan'} <- output schema: RA_TMP_VIEW_12(drinker varchar, bar varchar, times_a_week int2)
+            Frequents <- output schema: RA_TMP_VIEW_11(drinker varchar, bar varchar, times_a_week int2)
+=====
+Output schema: (bar varchar)
+-----
+Down Under Pub
+The Edge
+-----
+Total number of rows: 2
+
+Parsed query:
+\diff
+    \project_{bar,beer}
+        Serves
+    \project_{bar,beer}
+        \join_{null}
+            \join_{null}
+                Frequents
+                Likes
+            Serves
+=====
+Validated query:
+\diff <- output schema: RA_TMP_VIEW_9(bar varchar, beer varchar)
+    \project_{bar,beer} <- output schema: RA_TMP_VIEW_2(bar varchar, beer varchar)
+        Serves <- output schema: RA_TMP_VIEW_1(bar varchar, beer varchar, price numeric)
+    \project_{bar,beer} <- output schema: RA_TMP_VIEW_8(bar varchar, beer varchar)
+        \join_{null} <- output schema: RA_TMP_VIEW_7(drinker varchar, bar varchar, times_a_week int2, beer varchar, price numeric)
+            \join_{null} <- output schema: RA_TMP_VIEW_5(drinker varchar, bar varchar, times_a_week int2, beer varchar)
+                Frequents <- output schema: RA_TMP_VIEW_3(drinker varchar, bar varchar, times_a_week int2)
+                Likes <- output schema: RA_TMP_VIEW_4(drinker varchar, beer varchar)
+            Serves <- output schema: RA_TMP_VIEW_6(bar varchar, beer varchar, price numeric)
+=====
+Output schema: (bar varchar, beer varchar)
+-----
+Satisfaction|Full Sail
+-----
+Total number of rows: 1
+
+Bye!
+
