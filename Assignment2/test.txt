@@ -1,0 +1,11 @@
+(SELECT bar, count(*)
+FROM frequents
+GROUP BY frequents.bar
+ORDER BY count(*) DESC)
+FULL OUTER JOIN
+(SELECT bar, avg(price)
+FROM serves
+GROUP BY bar)
+psql:test.sql:10: ERROR:  syntax error at or near "FULL"
+LINE 5: FULL OUTER JOIN
+        ^
