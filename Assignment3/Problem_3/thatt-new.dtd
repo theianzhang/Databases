@@ -1,0 +1,8 @@
+<!ELEMENT Zthes (term)*>
+<!ELEMENT term (relation*)>
+<!ATTLIST term id ID #REQUIRED>
+<!ATTLIST term name CDATA #REQUIRED>
+<!ATTLIST term type (NT|TT|ND) #REQUIRED>
+<!ELEMENT relation EMPTY>
+<!ATTLIST relation type (NT|BT|USE|UF|RT) #REQUIRED>
+<!ATTLIST relation term IDREF #REQUIRED>

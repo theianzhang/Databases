@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Zthes SYSTEM "/opt/dbcourse/examples/xml-zthes/thatt-new.dtd">
+<Zthes>
+<term id="term-1159" name="THIRD WORLD" type="ND">
+  <relation type="USE" term="term-347"/>
+</term>
+<term id="term-1108" name="STANDARDS" type="TT">
+  <relation type="NT" term="term-13"/>
+  <relation type="NT" term="term-62"/>
+</term>
+<term id="term-1607" name="MACHINE LEARNING" type="TT">
+  <relation type="RT" term="term-1604"/>
+</term>
+<term id="term-566" name="GEOGRAPHY" type="TT">
+  <relation type="NT" term="term-740"/>
+  <relation type="NT" term="term-1022"/>
+  <relation type="NT" term="term-1047"/>
+  <relation type="NT" term="term-1296"/>
+</term>
+</Zthes>

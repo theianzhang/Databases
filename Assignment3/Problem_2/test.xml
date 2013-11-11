@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<result>
+   <person id="person0">
+      <name>Ayonca Vijaykrishnan</name>
+      <emailaddress>mailto:Vijaykrishnan@nyu.edu</emailaddress>
+      <phone>+0 (477) 63141558</phone>
+      <address>
+         <street>49 Nandavar St</street>
+         <city>Tallahassee</city>
+         <country>Portugal</country>
+         <zipcode>7</zipcode>
+      </address>
+      <homepage>http://www.nyu.edu/~Vijaykrishnan</homepage>
+      <profile income="83146.24">
+         <interest category="category1"/>
+         <interest category="category1"/>
+         <interest category="category2"/>
+         <interest category="category3"/>
+         <interest category="category1"/>
+         <interest category="category2"/>
+         <education>Graduate School</education>
+         <gender>male</gender>
+         <business>No</business>
+         <age>52</age>
+      </profile>
+      <watches>
+         <watch open_auction="open_auction34"/>
+         <watch open_auction="open_auction49"/>
+      </watches>
+   </person>
+</result>

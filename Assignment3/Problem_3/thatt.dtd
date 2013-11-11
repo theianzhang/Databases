@@ -1,0 +1,28 @@
+<!ELEMENT Zthes (term)*>
+
+<!ELEMENT term (termId, termName, termType, relation*)>
+
+<!ELEMENT termId (#PCDATA)>
+<!-- termId serves as a unique identifier for the terms. -->
+
+<!ELEMENT termName (#PCDATA)>
+
+<!ELEMENT termType (#PCDATA)>
+<!-- More specifically, termType should be one of ``NT'', ``TT'', and
+     ``ND''.  Never mind what they mean. ^_^
+-->
+
+<!ELEMENT relation (relationType, termId, termName)>
+
+<!ELEMENT relationType (#PCDATA)>
+<!-- More specifically, relationType should be one of the following:
+    ``NT'':  Narrower term; that is, the related term is more specific
+             than the current one.
+    ``BT'':  Broader term; that is, the related term is more general
+             than the current one.
+    ``USE'': Use instead; that is, the related term should be used in
+             preference to the current one.
+    ``UF'':  Use for; that is, the current term should be used in
+             preference to the related one.
+    ``RT'':  Related term.
+-->

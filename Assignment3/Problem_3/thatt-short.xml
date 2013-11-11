@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<!DOCTYPE Zthes SYSTEM "/opt/dbcourse/examples/xml-zthes/thatt.dtd">
+
+<Zthes>
+
+ <term>
+  <termId>1159</termId>
+  <termName>THIRD WORLD</termName>
+  <termType>ND</termType>
+  <relation>
+   <relationType>USE</relationType>
+   <termId>347</termId>
+   <termName>DEVELOPING COUNTRIES</termName>
+  </relation>
+ </term>
+
+ <term>
+  <termId>1108</termId>
+  <termName>STANDARDS</termName>
+  <termType>TT</termType>
+  <relation>
+   <relationType>NT</relationType>
+   <termId>13</termId>
+   <termName>ACCOUNTING STANDARDS</termName>
+  </relation>
+  <relation>
+   <relationType>NT</relationType>
+   <termId>62</termId>
+   <termName>AUDITING STANDARDS</termName>
+  </relation>
+ </term>
+
+ <term>
+  <termId>1607</termId>
+  <termName>MACHINE LEARNING</termName>
+  <termType>TT</termType>
+  <relation>
+   <relationType>RT</relationType>
+   <termId>1604</termId>
+   <termName>NEURAL NETWORK</termName>
+  </relation>
+ </term>
+
+ <term>
+  <termId>566</termId>
+  <termName>GEOGRAPHY</termName>
+  <termType>TT</termType>
+  <relation>
+   <relationType>NT</relationType>
+   <termId>740</termId>
+   <termName>LAND</termName>
+  </relation>
+  <relation>
+   <relationType>NT</relationType>
+   <termId>1022</termId>
+   <termName>REGIONAL DIFFERENCES</termName>
+  </relation>
+  <relation>
+   <relationType>NT</relationType>
+   <termId>1047</termId>
+   <termName>RURAL AREAS</termName>
+  </relation>
+  <relation>
+   <relationType>NT</relationType>
+   <termId>1296</termId>
+   <termName>URBAN AREAS</termName>
+  </relation>
+ </term>
+
+</Zthes>
